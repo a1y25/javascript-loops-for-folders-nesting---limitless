@@ -1,0 +1,107 @@
+<div class="container">
+	
+
+</div>
+
+<script src="jquery.js"></script>
+<script>
+	
+	var numberOfLevels = 2;
+	var currentlevel = 1;
+
+	var folders = [
+		{
+			id: 1,
+			title: "javascript",
+			level:1,
+			parent: 0
+		},
+		{
+			id: 2,
+			title: "php",
+			level:1,
+			parent: 0
+		},
+		{
+			id: 3,
+			title: "laravel",
+			level: 2,
+			parent: 2
+		},
+		{
+			id:4,
+			title: "ember",
+			level:2,
+			parent:1
+		},
+		{
+			id:5,
+			title: "angularjs",
+			level: 2,
+			parent:1
+		},
+		{
+			id:6,
+			title: "laravel 5",
+			level:3,
+			parent: 3
+		},
+		{
+			id: 7,
+			title: "angular ui",
+			level:3,
+			parent: 5
+		}
+	];
+
+	var levels = folders.map(function (folder){
+		return folder.level;
+	});
+	var maxLevel = Math.max.apply(null, levels);
+
+
+	// php js // level 1
+	// laravel angular ember //level 2
+	function generateFolders(level, parentId){
+
+		if(level == maxLevel+1) {return;}
+
+		folders.forEach(function (folder){	
+
+			// console.log(folder.level, "@level..");
+			// console.log(folder.parent, "@id..");
+
+			if(folder.level == level && folder.parent==parentId){
+				document.querySelector('.container').innerHTML+= dash(level) + folder.title+"<br>";
+				generateFolders(level+1, folder.id);
+			}
+
+		});
+	};
+
+	//folderLevel, parentId
+	generateFolders(currentlevel,0);
+
+	function dash(level){
+		var dashes = "";
+		for (var i = 1; i <= level; i++) {
+			dashes+='----';
+		}
+		return dashes;
+	};
+	
+
+
+
+
+//results.....
+/*
+----javascript
+--------ember
+--------angularjs
+----php
+--------laravel
+------------laravel 5
+*/
+
+</script>
