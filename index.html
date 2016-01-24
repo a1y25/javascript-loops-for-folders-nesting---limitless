@@ -1,6 +1,9 @@
-<div class="lvl_1_container">
-	
-
+<style>
+	li{
+		cursor: pointer;
+	}
+</style>
+<div class="lvl1_p0_container">
 </div>
 
 <script src="jquery.js"></script>
@@ -66,13 +69,13 @@
 		if(level == maxLevel+1) {return;}
 
 		var ul = $('<ul>',{
-		}).appendTo('.lvl_'+level+'_container');
+		}).appendTo('.lvl'+level+'_p'+parentId+'_container');
 		
 		folders.forEach(function (folder){	
 
 			if(folder.level == level && folder.parent==parentId){
 				$('<li>',{
-					class: "lvl_"+(level+1)+"_container"
+					class: 'lvl'+(level+1)+'_p'+folder.id+'_container'
 				}).text(folder.title).appendTo(ul);
 
 				generateFolders(level+1, folder.id);
