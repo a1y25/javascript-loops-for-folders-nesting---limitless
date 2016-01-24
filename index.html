@@ -1,4 +1,4 @@
-<div class="container">
+<div class="lvl_1_container">
 	
 
 </div>
@@ -63,20 +63,24 @@
 	// php js // level 1
 	// laravel angular ember //level 2
 	function generateFolders(level, parentId){
-
 		if(level == maxLevel+1) {return;}
 
+		var ul = $('<ul>',{
+		}).appendTo('.lvl_'+level+'_container');
+		
 		folders.forEach(function (folder){	
 
-			// console.log(folder.level, "@level..");
-			// console.log(folder.parent, "@id..");
-
 			if(folder.level == level && folder.parent==parentId){
-				document.querySelector('.container').innerHTML+= dash(level) + folder.title+"<br>";
+				$('<li>',{
+					class: "lvl_"+(level+1)+"_container"
+				}).text(folder.title).appendTo(ul);
+
 				generateFolders(level+1, folder.id);
+				
 			}
 
 		});
+
 	};
 
 	//folderLevel, parentId
