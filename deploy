@@ -1,1 +1,1 @@
-put -rp "${HOME}/clone/" /var/www/codeship/
+put -rp "${HOME}/rof/src/github.com/a1y25/javascript-loops-for-folders-nesting---limitless" /var/www/codeship/
